@@ -1,6 +1,6 @@
 list1 = []
 list2 = []
-file = open("input.txt", "r")
+file = open("01.txt", "r")
 lowestID1 = None
 lowestID2 = None
 mismatch = 0
