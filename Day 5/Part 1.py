@@ -13,10 +13,10 @@ def checkUpdate(update, rule1, rule2):
 
 
 for aline in enumerate(file):
-    if aline[0] < 1176:
+    if aline[0] < 21:
         rules.append(aline[1][0:2])
         rules.append(aline[1][3:5])
-    elif aline[0] > 1177:
+    elif aline[0] > 22:
         temp = []
         temp.append(aline[1])
         for i in temp:
