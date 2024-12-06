@@ -11,7 +11,6 @@ def checkUpdate(update, rule1, rule2):
         return True
     return False
 
-
 for aline in enumerate(file):
     if aline[0] < 1176:
         rules.append(aline[1][0:2])
@@ -23,14 +22,26 @@ for aline in enumerate(file):
             i = i.strip()
             updates.append(i.split(","))
 
-for update in enumerate(updates):
+for update in updates:
     isCorrect = True
     for i in range(0, len(rules), 2):
-        if rules[i] in update[1] and rules[i+1] in update[1]:
-            if checkUpdate(update[1], rules[i], rules[i+1]) == False:
+        if rules[i] in update and rules[i+1] in update:
+            if checkUpdate(update, rules[i], rules[i+1]) == False:
                 isCorrect = False
-                
+                break
     if isCorrect:
-        updates.remove(update[1])
+        updates.remove(update)
+
+for update in updates:
+    isCorrect = False
+    for i in range(0, len(rules), 2):
+        if not isCorrect:
+            if rules[i] in update and rules[i+1] in update:
+                #do some sorting
+                isCorrect = checkUpdate(update, rules[i], rules[i+1])
+        else:
+            #find middle number, add to ouputd
+
+
         
 print(updates)
