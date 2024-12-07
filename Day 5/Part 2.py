@@ -6,52 +6,56 @@ finalList = []
 output = 0
 
 
-
 def checkUpdate(update, rule1, rule2):
     if update.index(rule1) < update.index(rule2):
-        
         return True
     return False
 
-    
 
-for aline in enumerate(file):
-    if aline[0] < 21:
-        rules.append(aline[1][0:2])
-        rules.append(aline[1][3:5])
-    elif aline[0] > 22:
-        temp = []
-        temp.append(aline[1])
-        for i in temp:
-            i = i.strip()
-            updates.append(i.split(","))
+for aline in file:
+    aline = aline.strip()
+    if "|" in aline:
+        temp = aline.split("|")
+        rules.append(temp[0])
+        rules.append(temp[1])
+    elif "," in aline:
+        updates.append(aline.split(","))
 
+
+filtered_updates = []
 for update in updates:
     isCorrect = True
     for i in range(0, len(rules), 2):
         if rules[i] in update and rules[i+1] in update:
-            if checkUpdate(update, rules[i], rules[i+1]) == False:
+            if not checkUpdate(update, rules[i], rules[i+1]):
                 isCorrect = False
                 break
-    if isCorrect:
-        updates.remove(update)
+    if not isCorrect:
+        filtered_updates.append(update)
+updates = filtered_updates
+
 print(updates)
 
 for update in updates:
     isCorrect = False
-    newUpdate = []
-    for i in range(0, len(rules), 2):
-        if not isCorrect:
+    while not isCorrect:
+        isCorrect = True
+
+        for i in range(0, len(rules), 2):
             if rules[i] in update and rules[i+1] in update:
                 rule1Index = update.index(rules[i])
                 rule2Index = update.index(rules[i+1])
-                
-                update.insert(rule2Index - 1, update.pop(rule2Index))
-                isCorrect = checkUpdate(update, rules[i], rules[i+1])
-                print(isCorrect)
-        else:
-            middleIndex = len(update) // 2
-            output += int(update[middleIndex])
 
-        
+                if rule1Index > rule2Index:
+                    update[rule1Index], update[rule2Index] = update[rule2Index], update[rule1Index]
+                    count += 1
+                    isCorrect = False
+
+        if isCorrect:
+            break
+
+    middleIndex = len(update) // 2
+    output += int(update[middleIndex])
+    print(update)
+
 print(output)
