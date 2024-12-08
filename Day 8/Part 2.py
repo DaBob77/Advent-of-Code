@@ -31,20 +31,36 @@ for i in range(len(antennas)):
             print(antennas[i], antennas[j])
             dist = calcDist(antennas[i][1], antennas[i][2], antennas[j][1], antennas[j][2])
             print(dist)
-            newX = antennas[i][1] + dist[0] * 2
-            newY = antennas[i][2] + dist[1] * 2
+            newX = 0
+            newY = 0
             print("X:", newX, "Y:", newY)
-            if 0 <= newX < len(newPuzzle) and 0 <= newY < len(newPuzzle[0]):
-                newPuzzle[newX][newY] = "#"
-            newX = antennas[i][1] + dist[0] * -1
-            newY = antennas[i][2] + dist[1] * -1
-            print("X:", newX, "Y:", newY)
-            if 0 <= newX < len(newPuzzle) and 0 <= newY < len(newPuzzle[0]):
-                newPuzzle[newX][newY] = "#"
 
-for i in newPuzzle:
-    for j in i:
-        if j == "#":
+            y = 1
+            while True:
+                newX = antennas[i][1] + dist[0] * y
+                newY = antennas[i][2] + dist[1] * y
+                if 0 <= newX < len(newPuzzle) and 0 <= newY < len(newPuzzle[0]):
+                    newPuzzle[newX][newY] = "#"
+                    y += 1
+                else:
+                    break
+
+            y = -1
+            while True:
+
+                newX = antennas[i][1] + dist[0] * y
+                newY = antennas[i][2] + dist[1] * y
+                print("X:", newX, "Y:", newY)
+                if 0 <= newX < len(newPuzzle) and 0 <= newY < len(newPuzzle[0]):
+                    newPuzzle[newX][newY] = "#"
+                    y -= 1
+                else:
+                    break
+
+for i in range(len(newPuzzle)):
+    print(newPuzzle[i])
+    for j in newPuzzle[i]:
+        if j != '.':
             count += 1
 
 print(count)
