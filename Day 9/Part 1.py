@@ -23,15 +23,19 @@ for i in range(len(expanded) - 1, 0, -1):
     print(i)
     if expanded[i] != '.':
         for j in range(len(expanded)):
-            if expanded[j] == '.':
-                expanded[j] = expanded[i]
-                expanded[i] = ""
+            if j < i:
+                if expanded[j] == '.':
+                   expanded[j] = expanded[i]
+                   expanded[i] = "."
+                   break
+            else:
                 break
 
 expanded = "".join(expanded)
 print(expanded)
 
 for i in range(len(expanded)):
-    output += int(expanded[i]) * i
+    if expanded[i] != ".":
+       output += int(expanded[i]) * i
 
 print(output)
