@@ -8,19 +8,17 @@ output = 0
 for aline in file:
     input = aline
 
+expanded = list(expanded)
 
 for i in range(len(input)):
     if i % 2 == 0:
         for j in range(int(input[i])):
-            expanded += str(i//2)
+            expanded.append(str(i//2))
     else:
         for j in range(int(input[i])):
             expanded += '.'
-print(expanded)
 
-expanded = list(expanded)
 for i in range(len(expanded) - 1, 0, -1):
-    print(i)
     if expanded[i] != '.':
         for j in range(len(expanded)):
             if j < i:
@@ -31,8 +29,6 @@ for i in range(len(expanded) - 1, 0, -1):
             else:
                 break
 
-expanded = "".join(expanded)
-print(expanded)
 
 for i in range(len(expanded)):
     if expanded[i] != ".":
