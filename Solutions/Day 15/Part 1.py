@@ -27,10 +27,6 @@ def step(move, pos):
                 map[newPos[0]][newPos[1]] = "@"
                 map[pos[0]][pos[1]] = "."
                 return newPos
-
-
-
-
     return pos 
 
 
@@ -48,7 +44,6 @@ def push(move, pos):
             return True
     
 
-
 readMoves = False
 for aline in file:
 
@@ -61,13 +56,10 @@ for aline in file:
         moves += aline.strip()
 
 
-
 for i in range(len(map)):
     for j in range(len(map[i])):
         if map[i][j] == "@":
             robotPos = (i, j)
-
-
 
 
 for i in range(len(moves)):
