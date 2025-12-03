@@ -1,6 +1,6 @@
 import java.io.FileNotFoundException;
 
-public class Part2 {
+public class D1P1 {
     public static void main(String[] args) throws FileNotFoundException {
         String[] input = Filetools.txtToStringArr("2025/Input/01.txt");
         
@@ -9,14 +9,15 @@ public class Part2 {
         for (String line : input) {
             int dir = line.charAt(0) == 'R' ? 1 : -1;
             int moveValue = Integer.parseInt(line.substring(1, line.length()));
+            currentPoint = (currentPoint + moveValue * dir) % 100;
 
-            for (int i = 0; i < moveValue; i++) {
-                currentPoint += dir;
+            System.out.println(count + ", " + line + ", " + currentPoint);
 
-                if (currentPoint < 0) currentPoint = 99;
-                if (currentPoint > 99) currentPoint = 0;
-                if (currentPoint == 0) count++;
+            if (currentPoint == 0) {
+                count++;
             }
+
+            //System.out.println(currentPoint);
         }
         System.out.println(count);
     }

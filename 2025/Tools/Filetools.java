@@ -13,6 +13,21 @@ public class Filetools {
             temp.add(scanner.nextLine());
         }
 
+        scanner.close();
         return temp.toArray(new String[0]);
+    }
+
+    public static String txtToString(String filename) throws FileNotFoundException {
+        File file = new File(filename);
+        Scanner scanner = new Scanner(file);
+
+        String output = "";
+        
+        while (scanner.hasNext()) {
+            output += scanner.nextLine();
+        }
+
+        scanner.close();
+        return output;
     }
 }
