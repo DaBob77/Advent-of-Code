@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "D5P1",
+            "request": "launch",
+            "mainClass": "D5P1",
+            "projectName": "Advent-of-Code_c2911d50"
+        },
+        {
+            "type": "java",
             "name": "D4P2",
             "request": "launch",
             "mainClass": "D4P2",
