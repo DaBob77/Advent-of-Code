@@ -1,29 +1,33 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class D5P1 {
     public static void main(String[] args) throws FileNotFoundException{
         String[] rawInput = Filetools.txtToStringArr("2025/Input/05.txt");
-        List<String> ranges = new ArrayList<>();
-        List<String> ids = new ArrayList<>();
+        ArrayList<String> ranges = new ArrayList<>();
+        ArrayList<String> ids = new ArrayList<>();
         int total = 0;
 
-        for (int i = 0; i < rawInput.length; i++) {
-            if (rawInput[i].contains("-")) {
-                ranges.add(rawInput[i]);
-            }  else if (!rawInput[i].isEmpty()){
-                ids.add(rawInput[i]);
+        for (String rawInput1 : rawInput) {
+            if (rawInput1.contains("-")) {
+                ranges.add(rawInput1);
+            } else if (!rawInput1.isEmpty()) {
+                ids.add(rawInput1);
             }
+            System.out.println(ranges);
         }
 
-        List<Long> validIds = getValidIds(ranges);
-        System.out.println(validIds);
+        long[][] parts = new long[ranges.size()][2];
+
+        for (int i = 0; i < ranges.size(); i++) {
+            parts[i][0] = Long.parseLong(ranges.get(i).split("-")[0]);
+            parts[i][1] = Long.parseLong(ranges.get(i).split("-")[1]);
+        }
 
         for (int i = 0; i < ids.size(); i++) {
             boolean expired = true;
-            for (int j = 0; j < validIds.size(); j++) {
-                if (Long.parseLong(ids.get(i)) == validIds.get(j)) {
+            for (long[] part : parts) {
+                if (Long.parseLong(ids.get(i)) >= part[0] && Long.parseLong(ids.get(i)) <= part[1]) {
                     expired = false;
                     break;
                 }
@@ -31,28 +35,10 @@ public class D5P1 {
 
             if (!expired) {
                 total++;
-                System.out.println(ids.get(i));
+                //System.out.println(ids.get(i));
             }
         }
         System.out.println(total);
 
     }
-    public static List<Long> getValidIds(List<String> ranges){
-        long[][] parts = new long[ranges.size()][2];
-
-        for (int i = 0; i < ranges.size(); i++) {
-            parts[i][0] = Long.parseLong(ranges.get(i).split("-")[0]);
-            parts[i][1] = Long.parseLong(ranges.get(i).split("-")[1]);
-        }
-        
-        List<Long> validIds = new ArrayList<>();
-
-        for (int i = 0; i < parts.length; i++) {
-            for (long j = parts[i][0]; j <= parts[i][1]; j++) {
-                validIds.add((long)j);
-            }
-        }
-        return validIds;
-    }
-    
 }
