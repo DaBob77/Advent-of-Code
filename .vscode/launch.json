@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Bored",
+            "request": "launch",
+            "mainClass": "Bored",
+            "projectName": "Advent-of-Code_47b7e0d"
+        },
+        {
+            "type": "java",
+            "name": "D7P2",
+            "request": "launch",
+            "mainClass": "D7P2",
+            "projectName": "Advent-of-Code_47b7e0d"
+        },
+        {
+            "type": "java",
+            "name": "D7P1",
+            "request": "launch",
+            "mainClass": "D7P1",
+            "projectName": "Advent-of-Code_47b7e0d"
+        },
+        {
+            "type": "java",
             "name": "D6P2",
             "request": "launch",
             "mainClass": "D6P2",
