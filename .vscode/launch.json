@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "D8P1",
+            "request": "launch",
+            "mainClass": "D8P1",
+            "projectName": "Advent-of-Code_c2911d50"
+        },
+        {
+            "type": "java",
             "name": "Bored",
             "request": "launch",
             "mainClass": "Bored",
