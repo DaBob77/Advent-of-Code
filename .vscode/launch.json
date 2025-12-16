@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "D10P1",
+            "request": "launch",
+            "mainClass": "D10P1",
+            "projectName": "Advent-of-Code_47b7e0d"
+        },
+        {
+            "type": "java",
+            "name": "D9P2",
+            "request": "launch",
+            "mainClass": "D9P2",
+            "projectName": "Advent-of-Code_47b7e0d"
+        },
+        {
+            "type": "java",
+            "name": "D9P1",
+            "request": "launch",
+            "mainClass": "D9P1",
+            "projectName": "Advent-of-Code_47b7e0d"
+        },
+        {
+            "type": "java",
             "name": "D9P1",
             "request": "launch",
             "mainClass": "D9P1",

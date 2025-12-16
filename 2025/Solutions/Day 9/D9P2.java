@@ -48,7 +48,7 @@ public class D9P2 {
     }
     
     public static void main(String[] args) throws FileNotFoundException{
-        String[] rawInput = Filetools.txtToStringArr("2025/Input/09.txt");
+        String[] rawInput = Filetools.txtToStringArr("09.txt");
         ArrayList<Point> points = new ArrayList<>();
         Queue<Sequence> sQueue = new PriorityQueue<>();
 
@@ -59,6 +59,8 @@ public class D9P2 {
         }
 
         points.get(0).parent = points.get(points.size() - 1);
+
+        System.out.println(getHighestX(points) + ", " + getHighestY(points));
 
         char[][] map = buildMap(points);
 
@@ -103,17 +105,6 @@ public class D9P2 {
         }
 
         System.out.println(s);
-
-
-        for (char[] row : map) {
-            for (char item : row) {
-                System.out.print(item);
-            }
-            System.out.println();
-        }
-
-
-        
         
     }
 
